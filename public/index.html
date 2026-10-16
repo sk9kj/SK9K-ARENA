@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b18">
+  <title>SK9K ARENA</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">S</span><span>SK9K <b>ARENA</b><small>ONLINE ARENA</small></span></a>
+      <div class="server-status"><i id="statusDot"></i><span id="statusText">Hors ligne</span><span class="status-sep">•</span><span><b id="playerCount">0</b> joueurs</span></div>
+      <div class="profile"><span class="coin">✦</span><b id="coins">0</b><span id="profileName">Invité</span><button id="logoutBtn" class="quiet hidden">Déconnexion</button></div>
+    </header>
+
+    <main id="authScreen" class="auth-wrap">
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> ARÈNE MULTIJOUEUR EN TEMPS RÉEL</div>
+        <h1>DOMINE<br><span>L'ARÈNE.</span></h1>
+        <p>Accélère, récupère les orbes et deviens le dernier serpent debout.</p>
+        <div class="hero-tags"><span>● 2D ARENA</span><span>⚡ BOOST</span><span>♛ SK9K EDITION</span></div>
+      </section>
+      <section class="auth-card">
+        <div class="auth-tabs"><button class="tab active" data-mode="login">CONNEXION</button><button class="tab" data-mode="register">CRÉER UN COMPTE</button></div>
+        <form id="authForm">
+          <label for="username">PSEUDO</label>
+          <input id="username" name="username" minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" autocomplete="username" placeholder="Ex. SK9K_Player" required>
+          <small>3–16 caractères : lettres, chiffres et _ (sans emoji).</small>
+          <label for="password">MOT DE PASSE</label>
+          <input id="password" name="password" type="password" minlength="8" maxlength="72" autocomplete="current-password" placeholder="8 caractères minimum" required>
+          <button id="submitAuth" class="primary" type="submit">ENTRER DANS L'ARÈNE <span>↗</span></button>
+          <p id="authMessage" class="message" role="status"></p>
+        </form>
+        <div class="auth-foot"><span>🔒 Mot de passe haché</span><span>Prototype local v0.1</span></div>
+      </section>
+    </main>
+
+    <main id="gameScreen" class="game-layout hidden">
+      <aside class="side-panel">
+        <div class="panel-heading"><span>VOTRE PROFIL</span><span class="live-tag">LIVE</span></div>
+        <div class="player-card"><div id="avatar" class="avatar">S</div><div><strong id="gameUsername">Player</strong><div class="rank-line"><span class="rank-dot"></span> BRONZE <span id="elo">1000 ELO</span></div></div></div>
+        <div class="stat-grid"><div><small>VIE</small><strong id="healthText">100%</strong></div><div><small>JOUEURS</small><strong id="aliveText">1</strong></div></div>
+        <div class="health-track"><div id="healthBar"></div></div>
+        <div class="tip"><span>⚡</span><div><b>BOOST</b><p>Maintiens clic gauche ou Espace pour accélérer. Le boost consomme de la vie.</p></div></div>
+        <div class="tip"><span>✦</span><div><b>ORbes d'énergie</b><p>Récupère les orbes colorés pour regagner de la vie et gagner des pièces.</p></div></div>
+        <button id="backBtn" class="secondary">← QUITTER LA PARTIE</button>
+      </aside>
+      <section class="arena-shell">
+        <div class="arena-top"><div><span class="live-dot"></span> ARÈNE PRINCIPALE <small>EU • LOCAL</small></div><div class="arena-coords" id="coords">X 0000 / Y 0000</div></div>
+        <div id="canvasWrap"><canvas id="gameCanvas"></canvas><div id="centerMessage" class="center-message hidden"></div><div class="arena-hint">SOURIS POUR DIRIGER <span>•</span> CLIC / ESPACE POUR BOOST</div></div>
+        <div class="arena-bottom"><span><i class="legend-orb"></i> Orbes d'énergie</span><span><i class="legend-player"></i> Joueurs en ligne</span><span><i class="legend-bot"></i> Bot d'entraînement</span></div>
+      </section>
+    </main>
+    <footer><span>SK9K ARENA <b>v0.1</b></span><span>FAIT POUR LA COMPÉTITION <span class="gold">♛</span></span><span>LOCAL BUILD • 2026</span></footer>
+  </div>
+  <script src="/client.js"></script>
+</body>
+</html>
